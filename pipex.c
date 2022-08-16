@@ -57,10 +57,11 @@ int	main(int argc, char *argv[], char *envp[])
 	if (child_id == 0)
 	{
 		dup2(pipe_fd[1], 1);
-		close(pipe_fd[0]);
+		close(pipe_fd[0]); // kijk of deze ook bovenaan kan
 		dup2(fd_infile, 0);
 		execve(path_first_cmd, cmds_and_flags1, envp);
 	}
+	wait(NULL);
 	child_id = fork();
 	if (child_id == 0)
 	{
