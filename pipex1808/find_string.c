@@ -1,6 +1,6 @@
 #include "pipex.h"
 
-char *find_string(char *envp[], char *string)
+char *find_string(char *envp[], char *string, int len_string)
 {
 	int i;
 	int j;
@@ -9,7 +9,7 @@ char *find_string(char *envp[], char *string)
 	j = 0;
 	while(envp[j])
 	{
-		while(envp[j][i] && i < 3)
+		while(envp[j][i] && i < len_string - 1)
 		{
 			if (envp[j][i] != string[i])
 				break;

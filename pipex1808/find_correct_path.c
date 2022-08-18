@@ -1,4 +1,3 @@
-
 #include "pipex.h"
 
 char *find_correct_path(char *path_var, char *cmd)

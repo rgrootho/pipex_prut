@@ -1,5 +1,16 @@
 #include "pipex.h" 
 
+static int	free_swp(char **splitted_string, int j)
+{
+	while (j >= 0)
+	{
+		free(splitted_string[j]);
+		j--;
+	}
+	free(splitted_string);
+	return (0);
+}
+
 static char	*set_word_in_ss(char *s, int i, int wordlen)
 {
 	char	*a;
