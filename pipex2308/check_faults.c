@@ -65,7 +65,7 @@ int check_split(char **split, char *string, t_child var1, t_child var2)
 	return(0);
 }
 
-int check_pipe_fork(int fd, pid_t fork_id)
+int check_pipe_fork(int fd, pid_t fork_id, t_child var1, t_child var2)
 {
 	if (fd == -1 && fork == -1)
 	perror("Error!");
