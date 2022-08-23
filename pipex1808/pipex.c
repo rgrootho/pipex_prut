@@ -17,7 +17,6 @@ t_child put_stuff_in_struct(t_child child_variables, char *cmd_flag, char *file,
 	child_variables.path_for_cmd = find_correct_path(child_variables.path_var, child_variables.cmd_and_flags[0]);
 	child_variables.fd_file = open(file, O_RDWR);
 	child_variables.envp = envp;
-
 	return(child_variables);
 }
 
@@ -33,7 +32,6 @@ int main(int argc, char *argv[], char *envp[])
 	child2_variables.path_var = child1_variables.path_var;
 	child1_variables = put_stuff_in_struct(child1_variables, argv[2], argv[1], envp);
 	child2_variables = put_stuff_in_struct(child2_variables, argv[3], argv[4], envp);
-
 	pipe(pipe_fd);
 	if (fork() == 0)
 		child_process(child1_variables, pipe_fd, 1, 0);
@@ -43,7 +41,7 @@ int main(int argc, char *argv[], char *envp[])
 	close(pipe_fd[0]);
 	close(pipe_fd[1]);
 	close(child1_variables.fd_file);
-	close(child1_variables.fd_file);
+	close(child2_variables.fd_file);
 	// free all things
 	return(0);
 }
