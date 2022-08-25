@@ -19,7 +19,7 @@ t_child put_stuff_in_struct(t_child child_variables1, t_child child_variables2, 
 	check_split(child_variables1.cmd_and_flags, NULL, child_variables1, child_variables2);
 	child_variables1.path_for_cmd = find_correct_path(child_variables1.path_var, child_variables1.cmd_and_flags[0]);
 	check_split(NULL, child_variables1.path_for_cmd, child_variables1, child_variables2);
-	child_variables1.fd_file = open(file, O_RDWR);
+	child_variables1.fd_file = open(file, O_RDWR | O_CREAT );
 	check_pipe_fork(child_variables1.fd_file, -1, child_variables1, child_variables2);
 	child_variables1.envp = envp;
 	return(child_variables1);
@@ -41,7 +41,11 @@ int main(int argc, char *argv[], char *envp[])
 	child1_variables = put_stuff_in_struct(child1_variables,child2_variables, argv[2], argv[1], envp);
 	child2_variables = put_stuff_in_struct(child2_variables, child1_variables, argv[3], argv[4], envp);
 	
-	check_pipe_fork(pipe(&pipe_fd[0]), -1, child1_variables, child2_variables);
+
+	// hier splitten
+	// fork id en pipe_fd junnen hier worden initialized
+
+	check_pipe_fork(pipe(pipe_fd), -1, child1_variables, child2_variables);
 	fork_id = fork();
 	check_pipe_fork(0, fork_id, child1_variables, child2_variables);
 	if (fork_id == 0)
