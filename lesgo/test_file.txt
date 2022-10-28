@@ -1,0 +1,168 @@
+- not enough arguments
+===================================================================================
+input: ./pipex
+output pipex: Error: Not enough arguments
+output shell: no way too compare
+
+===================================================================================
+
+- Too many arguents
+===================================================================================
+input: ./pipex infile.txt "cat" "wc -l" "echo jo man" outfile.txt
+output pipex: Error: Too many arguments
+output shell: no way too compare
+
+===================================================================================
+
+
+- infile does not exist
+===================================================================================
+input:          ./pipex kipcorn "grep wow" "wc -l" outfile.txt
+output:         Error: kipcorn: No such file or directory 
+
+input terminal: < kipcorn grep wow | wc -l > outfile.txt
+output shell:   zsh: no such file or directory: kipcorn
+output bash:    bash: kipcorn: No such file or directory
+
+exitcode:       0
+
+ (second part of pipe still executes, outfile now has 0 in it)
+===================================================================================
+
+
+- cmd firstpart does not exist/typo 
+===================================================================================
+input: ./pipex  ./pipex infile.txt "greb wow" "wc -l" outfile.txt
+output: Error:  Error: greb: command not found
+
+input terminal: < infile.txt greb wow | wc -l  > outfile.txt
+output shell:   zsh: command not found: greb
+output bash:    bash: greb: command not found
+
+exitcode:       0
+
+ (second part of pipe still executes, outfile now has 0 in it)
+===================================================================================
+
+
+- outfile does not exist
+===================================================================================
+input:          ./pipex infile.txt "grep wow" "wc -l" oubfiel.txt
+output:         oubfiel is created -rw-r--r--
+
+input terminal: < infile.txt grep wow | wc -l > oubfiel.txt
+output shell:   oubfiel is created -rw-r--r--
+
+===================================================================================
+
+
+- cmd second part does not exist/typo
+===================================================================================
+input:          ./pipex infile.txt "grep wow" "wb -l" outfile.txt
+output:         Error: wb: command not found
+
+input terminal:  < infile.txt grep wow | wb -l > outfile.txt
+output shell:   zsh: command not found: wb
+output bash:    bash: wb: command not found
+
+exitcode:       127
+
+(first part of pipe still executes. use touch file.txt to test)
+(outfile has been emptied if it had anything in it at all)
+===================================================================================
+
+
+- infile does not exist + cmd cmd firstpart does not exist/typo
+===================================================================================
+input:          ./pipex kipcorn "greb wow" "wc -l" outfile.txt
+output:         Error: kipcorn: No such file or directory
+
+input terminal: < kipcorn greb wow | wc -l > outfile.txt 
+output shell:   zsh: no such file or directory: kipcorn
+output bash:    bash: kipcorn: No such file or directory
+ 
+ exitcode:       0
+
+ (second part of pipe still executes, outfile now has 0 in it)
+===================================================================================
+
+
+- outfile does not exist + cmd second part does not exist/typo
+===================================================================================
+input:          ./pipex infile.txt "grep wow" "wb -l" oubfiel.txt
+output:         Error: wb: command not found
+
+input terminal: < infile.txt grep wow | wb -l > oubfiel.txt
+output shell:   zsh: command not found: wb
+output bash:    bash: wb: command not found
+
+exitcode:     127   
+(oubfiel is created but is empty)
+===================================================================================
+
+
+- cmd firstpart does not exist/typo + cmd second part does not exist/typo
+===================================================================================
+input:          ./pipex infile.txt "greb wow" "wb -l" outfile.txt
+output:         Error: greb: command not found
+                Error: wb: command not found
+
+input terminal: < infile.txt greb wow | wb -l > outfile.txt
+output shell:   zsh: command not found: greb
+                zsh: command not found: wb
+output bash:    bash: greb: command not found
+                bash: wb: command not found
+
+exitcode:     127
+===================================================================================
+
+
+- infile does not have permission
+===================================================================================
+input:          ./pipex infile.txt "grep wow" "wc -l" outfile.txt
+output:         Error: infile.txt: Permission denied
+
+input terminal: < infile.txt grep wow | wc -l > outfile.txt
+output shell:   zsh: permission denied: infile.txt
+output bash:    bash: infile.txt: Permission denied
+
+exitcode:       0
+===================================================================================
+
+
+- outfile does not have permission
+===================================================================================
+input:          ./pipex infile.txt "grep wow" "wc -l" outfile.txt
+output:         Error: outfile.txt: Permission denied
+
+input terminal: < infile.txt grep wow | wc -l > outfile.txt
+output shell:   zsh: permission denied: outfile.txt
+output bash:    bash: outfile.txt: Permission denied
+
+exitcode:       1
+===================================================================================
+
+- unset PATH !
+===================================================================================
+input:          ./pipex infile.txt "grep wow" "wc -l" outfile.txt
+output:         
+
+input terminal:
+output shell:
+output bash:    bash: grep: No such file or directory
+                bash: wc: No such file or directory
+
+exitcode:       127
+===================================================================================
+
+
+
+- split, strjoin, malloc fail management
+
+- Norminette
+
+-maak functie bij find_cmd, die telt hoeveel arrays ie heeft gemaakt(split).
+ en dan kan je vergelijke, en kan ie NULL returnen
+ ik ga dood
+ ik vind het niet meer leuk
+ xoxo~
