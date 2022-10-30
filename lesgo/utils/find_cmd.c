@@ -6,13 +6,13 @@
 /*   By: rgrootho <rgrootho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/28 23:29:57 by rgrootho      #+#    #+#                 */
-/*   Updated: 2022/10/28 23:31:59 by rgrootho      ########   odam.nl         */
+/*   Updated: 2022/10/30 15:12:57 by rgrootho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../mandatory/pipex.h"
 
-char	**loup(t_childvars *vars, char **path_split, int i)
+char	**loup(t_childvars *vars, char **path_split, int i) // deze moet anders
 {
 	path_split[i] = ft_strjoin("/", path_split[i]);
 	if (path_split[i] == NULL)

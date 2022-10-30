@@ -6,7 +6,7 @@
 /*   By: rgrootho <rgrootho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/28 23:27:35 by rgrootho      #+#    #+#                 */
-/*   Updated: 2022/10/29 01:22:47 by rgrootho      ########   odam.nl         */
+/*   Updated: 2022/10/30 15:11:48 by rgrootho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	error_perror(char *string, t_childvars vars)
 {
 	write(2, "Error: ", 7);
 	ft_putstr_fd(string, 2);
-	perror("");
+	perror(" ");
 	free_all(vars);
 	vars = close_all(vars);
 	exit(1);

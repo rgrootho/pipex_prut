@@ -6,7 +6,7 @@
 /*   By: rgrootho <rgrootho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/30 14:42:25 by rgrootho      #+#    #+#                 */
-/*   Updated: 2022/10/30 14:48:53 by rgrootho      ########   odam.nl         */
+/*   Updated: 2022/10/30 15:11:42 by rgrootho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	child_func2(char *argv[], char *envp[], t_childvars vars)
 	dup2(vars.fd_pipe[0], 0);
 	dup2(vars.fd_outfile, 1);
 	execve(vars.path_for_exec, vars.cmd_flg, envp);
-	error_perror("execve ", vars);
+	error_perror("execve", vars);
 }
 
 void	child_func1(char *argv[], char *envp[], t_childvars vars)
@@ -37,7 +37,7 @@ void	child_func1(char *argv[], char *envp[], t_childvars vars)
 	dup2(vars.fd_pipe[1], 1);
 	dup2(vars.fd_infile, 0);
 	execve(vars.path_for_exec, vars.cmd_flg, envp);
-	error_perror("execve ", vars);
+	error_perror("execve", vars);
 }
 
 t_childvars	pipe_func(t_childvars vars)
