@@ -142,6 +142,34 @@ output bash:    bash: outfile.txt: Permission denied
 exitcode:       1
 ===================================================================================
 
+-infile does not have permission + outfile does not have permission
+===================================================================================
+input:			./pipex infile.txt "grep wow" "wc -l" outfile.txt
+output:			Error: infile.txt: Permission denied
+				Error: outfile.txt: Permission denied
+
+input terminal: < infile.txt grep wow | wc -l > outfile.txt
+output shell:	zsh: permission denied: infile.txt
+				zsh: permission denied: outfile.txt
+output bash:	bash: infile.txt: Permission denied
+				bash: outfile.txt: Permission denied
+
+exitcode:		1
+===================================================================================
+
+
+-infile does not exist + outfile does not exit
+===================================================================================
+input:			./pipex kipcorn "grep wow" "wc -l" oubfile.txt
+output:			Error: kipcorn: No such file or directory
+
+input terminal:	< kipcorn grep wow | wc -l > oubfile.txt
+output shell:	zsh: no such file or directory: kipcorn
+output bash:	bash: kipcorn: no such file or directory
+
+exitcode:		0
+===================================================================================
+
 - unset PATH !
 ===================================================================================
 input:          ./pipex infile.txt "grep wow" "wc -l" outfile.txt
@@ -155,6 +183,16 @@ output bash:    bash: grep: No such file or directory
 exitcode:       127
 ===================================================================================
 
+- sleep
+===================================================================================
+input:			./pipex infile.txt "sleep 5" "sleep 5" outfile.txt
+output:			*5 seconds of dooming silence*
+
+input terminal:	< infile.txt sleep 5 | sleep 5 > outfile.txt
+
+exitcode:		0
+(hij moet 5 seconden sleepen, niet 10)
+===================================================================================
 
 
 - split, strjoin, malloc fail management

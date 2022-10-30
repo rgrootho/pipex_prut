@@ -6,13 +6,13 @@
 /*   By: rgrootho <rgrootho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/28 23:29:57 by rgrootho      #+#    #+#                 */
-/*   Updated: 2022/10/30 15:12:57 by rgrootho      ########   odam.nl         */
+/*   Updated: 2022/10/30 21:15:04 by rgrootho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../mandatory/pipex.h"
 
-char	**loup(t_childvars *vars, char **path_split, int i) // deze moet anders
+char	**loop(t_childvars *vars, char **path_split, int i)
 {
 	path_split[i] = ft_strjoin("/", path_split[i]);
 	if (path_split[i] == NULL)
@@ -41,7 +41,7 @@ t_childvars	find_cmd(t_childvars vars)
 	size_path_split = size_pntr_array(path_split);
 	while (path_split && path_split[i])
 	{
-		path_split = loup(&vars, path_split, i);
+		path_split = loop(&vars, path_split, i);
 		if (path_split[i] == NULL || vars.path_for_exec)
 			break ;
 		i++;

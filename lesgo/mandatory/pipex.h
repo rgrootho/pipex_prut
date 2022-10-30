@@ -6,7 +6,7 @@
 /*   By: rgrootho <rgrootho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/28 23:11:37 by rgrootho      #+#    #+#                 */
-/*   Updated: 2022/10/29 01:22:02 by rgrootho      ########   odam.nl         */
+/*   Updated: 2022/10/30 22:13:01 by rgrootho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,10 @@ char		*ft_strdup(const char *s1);
 size_t		ft_strlen(const char *str);
 int			free_dbl_pointer(char **array, int len);
 void		free_all(t_childvars vars);
-t_childvars	close_all(t_childvars vars);
+void		close_all(t_childvars vars);
 void		ft_putstr_fd(char *s, int fd);
 int			check_file(char *file, t_childvars vars, int child_num);
 int			size_pntr_array(char **pntr_array);
+void		error_half(char *string, t_childvars vars, int num);
 
 #endif
