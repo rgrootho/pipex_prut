@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ft_strjoin.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rgrootho <rgrootho@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/10/30 14:41:06 by rgrootho      #+#    #+#                 */
+/*   Updated: 2022/10/30 14:41:12 by rgrootho      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../mandatory/pipex.h"
 
 char	*ft_memmove(char *src, char *dest, int len)
@@ -21,8 +33,6 @@ char	*ft_strjoin(char *last_part, char *first_part)
 	int		len_first_part;
 	int		len_last_part;
 	int		len_rs;
-
-
 
 	len_first_part = ft_strlen(first_part);
 	len_last_part = ft_strlen (last_part);

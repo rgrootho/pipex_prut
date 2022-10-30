@@ -6,7 +6,7 @@
 /*   By: rgrootho <rgrootho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/28 23:34:52 by rgrootho      #+#    #+#                 */
-/*   Updated: 2022/10/29 01:21:40 by rgrootho      ########   odam.nl         */
+/*   Updated: 2022/10/30 14:24:17 by rgrootho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	free_all(t_childvars vars)
 		free(vars.path_for_exec);
 }
 
-int close_one(int fd)
+int	close_one(int fd)
 {
 	if (fd > -1)
 	{

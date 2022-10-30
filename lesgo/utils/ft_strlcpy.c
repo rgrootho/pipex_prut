@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ft_strlcpy.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rgrootho <rgrootho@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/10/30 14:41:22 by rgrootho      #+#    #+#                 */
+/*   Updated: 2022/10/30 14:41:23 by rgrootho      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../mandatory/pipex.h"
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
