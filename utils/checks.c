@@ -6,7 +6,7 @@
 /*   By: rgrootho <rgrootho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/28 23:26:16 by rgrootho      #+#    #+#                 */
-/*   Updated: 2022/10/30 22:12:59 by rgrootho      ########   odam.nl         */
+/*   Updated: 2022/10/31 21:41:39 by rgrootho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ int	check_file(char *file, t_childvars vars, int child_num)
 	if (child_num == 1)
 	{
 		if (access(file, F_OK) == -1)
-			error_half(file, vars, 1);
+			error_half(file, vars);
 		else
 			fd = open(file, O_RDONLY);
 	}
 	else
 		fd = open(file, O_CREAT | O_TRUNC | O_RDWR, 0644);
 	if (fd == -1)
-		error_half(file, vars, 1);
+		error_half(file, vars);
 	return (fd);
 }

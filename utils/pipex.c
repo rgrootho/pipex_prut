@@ -6,7 +6,7 @@
 /*   By: rgrootho <rgrootho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/30 14:42:25 by rgrootho      #+#    #+#                 */
-/*   Updated: 2022/10/30 22:08:17 by rgrootho      ########   odam.nl         */
+/*   Updated: 2022/10/31 22:13:12 by rgrootho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,15 +66,16 @@ int	fork_func(char *argv[], char *envp[], t_childvars vars)
 
 	child_id1 = fork();
 	if (child_id1 < 0)
-		error_half("fork", vars, 1);
+		error_half("fork", vars);
 	if (child_id1 == 0)
 		child_func1(argv, envp, vars);
 	child_id2 = fork();
 	if (child_id2 < 0)
-		error_half("fork", vars, 2);
+		error_half("fork", vars);
 	if (child_id2 == 0)
 		child_func2(argv, envp, vars);
-	close_all(vars);
+	close(vars.fd_pipe[0]);
+	close(vars.fd_pipe[1]);
 	waitpid(child_id1, &status, 0);
 	waitpid(child_id2, &status, 0);
 	return (WEXITSTATUS(status));

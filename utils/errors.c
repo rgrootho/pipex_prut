@@ -6,7 +6,7 @@
 /*   By: rgrootho <rgrootho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/28 23:27:35 by rgrootho      #+#    #+#                 */
-/*   Updated: 2022/10/30 22:13:08 by rgrootho      ########   odam.nl         */
+/*   Updated: 2022/10/31 21:41:29 by rgrootho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,10 @@ void	error_perror(char *string, t_childvars vars)
 	exit(1);
 }
 
-void	error_half(char *string, t_childvars vars, int num)
+void	error_half(char *string, t_childvars vars)
 {
 	write(2, "Error: ", 7);
 	perror(string);
-	if (num == 2)
-		close(vars.fd_infile);
 	close(vars.fd_pipe[0]);
 	close(vars.fd_pipe[1]);
 	exit(1);

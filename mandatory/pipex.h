@@ -6,7 +6,7 @@
 /*   By: rgrootho <rgrootho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/28 23:11:37 by rgrootho      #+#    #+#                 */
-/*   Updated: 2022/10/30 22:13:01 by rgrootho      ########   odam.nl         */
+/*   Updated: 2022/10/31 20:03:34 by rgrootho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ void		close_all(t_childvars vars);
 void		ft_putstr_fd(char *s, int fd);
 int			check_file(char *file, t_childvars vars, int child_num);
 int			size_pntr_array(char **pntr_array);
-void		error_half(char *string, t_childvars vars, int num);
+void		error_half(char *string, t_childvars vars);
 
 #endif

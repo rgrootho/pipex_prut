@@ -6,7 +6,7 @@
 /*   By: rgrootho <rgrootho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/28 23:34:01 by rgrootho      #+#    #+#                 */
-/*   Updated: 2022/10/28 23:34:18 by rgrootho      ########   odam.nl         */
+/*   Updated: 2022/10/31 19:47:04 by rgrootho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*find_string(char *envp[], char *string, int len_string)
 			i++;
 		}
 		if (i == 3)
-			return (envp[j]);
+			return (envp[j] + 5);
 		j++;
 		i = 0;
 	}
